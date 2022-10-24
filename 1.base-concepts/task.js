@@ -18,17 +18,14 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   //проверка типа данных
   if (isNaN(percent)) {
     totalAmount = `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
-    console.log(totalAmount);
     return totalAmount;
   } else percent = +percent;
   if (isNaN(contribution)) {
     totalAmount = `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
-    console.log(totalAmount);
     return totalAmount;
   } else contribution = +contribution;
   if (isNaN(amount)) {
     totalAmount = `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
-    console.log(totalAmount);
     return totalAmount;
   } else amount = +amount;
   //тело кредита
@@ -39,7 +36,6 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let term = Math.floor((date - current) / 2592000000);
   //ежемесячный платёж
   let monthly = body * ((percent / 100 / 12) + ((percent / 100 / 12) / ((((1 + (percent / 100 / 12)) ** term) - 1))))
-  console.log(monthly);
   //сумма платежа
   totalAmount = monthly * term;
   totalAmount = +totalAmount.toFixed(2);
